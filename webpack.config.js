@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
   entry: './frontend/slacker.jsx',
   output: { 
-    path: 'app/assets/javascript',
-    filename: './bundle.js',
+    path: path.resolve(__dirname),
+    filename: './app/assets/javascript/bundle.js',
   },
   module: {
     rules: [
