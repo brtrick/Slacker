@@ -1,3 +1,7 @@
+
+bundle.js
+bundle.js.map
+
 *.rbc
 capybara-*.html
 .rspec
