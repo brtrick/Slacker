@@ -5,7 +5,7 @@ module.exports = {
   entry: './frontend/slacker.jsx',
   output: { 
     path: path.resolve(__dirname),
-    filename: './app/assets/javascript/bundle.js',
+    filename: './app/assets/javascripts/bundle.js',
   },
   module: {
     rules: [

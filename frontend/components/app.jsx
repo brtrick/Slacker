@@ -5,7 +5,8 @@ import { Route } from "react-router-dom"
 const App = () => (
     <div>
         <header>
-            <h1>Welcome to Slacker</h1>
+            {/* <h1>Welcome to Slacker</h1> */}
+            <img src={slackerRGBUrl}/>
             {/* <Route exact path="/" component={GreetingContainer} />
             <Route path="/login" component={LoginFormContainer} />
             <Route path="/signup" component={SignupFormContainer} /> */}
