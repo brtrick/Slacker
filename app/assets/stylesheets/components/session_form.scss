@@ -128,7 +128,7 @@
         }
     }
     
-    .email-feedback, .password-feedback {
+    .feedback {
         display: none;
     }
     
@@ -136,21 +136,21 @@
         height: 16px;
         display: none;
     }
-    .get-email, .get-password {
+    .get-input {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         margin-bottom: 20px;
     }
 
-    .email-input.error, .password-input.error{ 
+    .session-input.error { 
         margin-bottom: 0;
         border-color: $red-error;;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
     }
     
-    .email-feedback.error, .password-feedback.error {
+    .feedback.error {
         box-sizing: border-box;
         width: 400px;
         height: 36px;
