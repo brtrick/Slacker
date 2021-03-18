@@ -1,0 +1,13 @@
+// font
+
+a {
+    color: $blue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button:hover, a:hover {
+    cursor: pointer;
+}

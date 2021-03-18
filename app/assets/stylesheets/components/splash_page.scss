@@ -1,0 +1,21 @@
+.splash-header{
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 8%);
+    display: flex;
+    align-items: center;
+    z-index: 10;
+
+    .logo {
+        margin-right: auto;
+        height: 25px;
+        padding-left: 32px;
+    }
+}
+
+.splash-body{
+    position: relative;
+    top: 100px;
+}
