@@ -2,7 +2,6 @@ import React from "react";
 import {Link, Redirect} from "react-router-dom"
 import errors_reducer from "../reducers/errors_reducer";
 
-// return /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-][-a-zA-Z0-9!#$%&'*+/=?^_`{|}~(?<!\.)\.(?!\.)]*(?<!\.)@(?!\.)[-a-zA-Z0-9!#$%&'*+/=?^_`{|}~(?<!\.)\.(?!\.)]+(?:\.[a-zA-Z0-9-]+)+$/.test(email)
 const emailValid = (email) => {
     return /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-][-a-zA-Z0-9!#$%&'*+/=?^_`{|}~.]*(?<!\.)@(?!\.)[-a-zA-Z0-9!#$%&'*+/=?^_`{|}~.]+(?:\.[a-zA-Z0-9-]+)+$/.test(email)
             && !/\.\./.test(email)
@@ -30,44 +29,29 @@ export default class SessionForm extends React.Component {
     handleChange (field) {
         return (e) => {
             if (this.submit) {
-                switch (field) {
-                    case "email":
-                        this.emailError = false;
-                        this.processEmailErrors(e.target.value);
-                        break;
-                    case "password":
-                        this.passwordError = false;
-                        this.processPasswordErrors(e.target.value);
-                        break;
-                }
+                this[field+'Error'] = false;
+                this.processErrors(field, e.target.value);
             }
             this.setState({[field]: e.target.value});  
         };
     }
     
-    processEmailErrors(email) {
-        if (email === "") {
-            this.emailError = true;
-            this.setState({emailErrorMessage: "Please fill in your email."});
+    processErrors(field, content) {
+        if (content === "") {
+            this[field + 'Error'] = true;
+            this.setState({ [field + 'ErrorMessage']: `Please fill in your ${field}.` });
         }
-        else if (!emailValid(email)) {
+        else if (field === "email" && !emailValid(content)) {
             this.emailError = true;
-            this.setState({emailErrorMessage: "Sorry, but that email is invalid."});
-        }
-    }
-    
-    processPasswordErrors(password) {
-        if (password === "") {
-            this.passwordError = true;
-            this.setState({passwordErrorMessage: "Please fill in your password."});
+            this.setState({ emailErrorMessage: "Sorry, but that email is invalid." });
         }
     }
 
     handleSubmit (e) {
         e.preventDefault();
         this.submit = true;
-        this.processEmailErrors(this.state.email);
-        this.processPasswordErrors(this.state.password);
+        this.processErrors("email", this.state.email);
+        this.processErrors("password", this.state.password);
         
         if (!this.emailError && !this.passwordError) {
             const user = Object.assign({}, this.state.user);
