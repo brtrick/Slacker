@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_161240) do
+ActiveRecord::Schema.define(version: 2021_03_19_201851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channels", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.bigint "workspace_id", null: false
+    t.boolean "private", default: false, null: false
+    t.boolean "dm", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_channels_on_name", unique: true
+    t.index ["workspace_id", "name"], name: "index_channels_on_workspace_id_and_name", unique: true
+    t.index ["workspace_id"], name: "index_channels_on_workspace_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "full_name", null: false
@@ -27,4 +40,12 @@ ActiveRecord::Schema.define(version: 2021_03_15_161240) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  create_table "workspaces", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_workspaces_on_name", unique: true
+  end
+
+  add_foreign_key "channels", "workspaces"
 end
