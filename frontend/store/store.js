@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "../reducers/root_reducer";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
+//import logger from "redux-logger";
 
 const defaultState = {
     entities: {
@@ -10,7 +10,8 @@ const defaultState = {
     session:{}
 }
 const configureStore = (preLoadedState = defaultState) => {
-    return createStore(rootReducer, preLoadedState, applyMiddleware(thunk, logger));
+    return createStore(rootReducer, preLoadedState, applyMiddleware(thunk));
+    // return createStore(rootReducer, preLoadedState, applyMiddleware(thunk, logger));
 }
 
 export default configureStore;
