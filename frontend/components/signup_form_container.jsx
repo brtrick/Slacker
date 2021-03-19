@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { signup } from "../actions/session_actions";
+import { signup, clearSessionErrors } from "../actions/session_actions";
 import SessionForm from "./session_form";
 
 const mapSTP = ({ errors: {session: errors}}) => {
@@ -12,6 +12,7 @@ const mapSTP = ({ errors: {session: errors}}) => {
 const mapDTP = (dispatch) => {
     return {
         processForm: (user) => dispatch(signup(user)),
+        clearSessionErrors: () => dispatch(clearSessionErrors())
     }
 };
 

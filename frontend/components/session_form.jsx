@@ -24,16 +24,26 @@ export default class SessionForm extends React.Component {
         this.passwordError = false;
         this.fullNameError = false;
         this.submit = false;
-        this.renderServerErrors = true;
+        this.renderServerErrors = false;
+        this.serverEmailErrorMessage = "";
+        this.serverPasswordErrorMessage = "";
+        this.serverErrorMessages = [];
 
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillUnmount() {
+        this.props.clearSessionErrors();
     }
 
     handleChange (field) {
         return (e) => {
             if (this.renderServerErrors) {
+                if ("field" !== "email")
+                    this.setState({emailErrorMessage: this.serverEmailErrorMessage});
+                if ("field" !== "password")
+                    this.setState({passwordErrorMessage: this.serverPasswordErrorMessage});
                 this.renderServerErrors = false;
-                this.setState()
             }
             if (this.submit) {
                 this[field+'Error'] = false;
@@ -54,22 +64,24 @@ export default class SessionForm extends React.Component {
         }
     }
 
-    processServerErrors(emailErrorMessages, passwordErrorMessages) {
-        const serverErrorMessages = [];
+    processServerErrors() {
+        this.serverErrorMessages = [];
+        this.serverEmailErrorMessage = "";
+        this.serverPasswordErrorMessage = "";
+
         this.props.errors.forEach( (error, idx) => {
             switch (error.substr(0, error.indexOf(" "))) {
                 case 'Email':
                     this.emailError = true;
-                    emailErrorMessages.push(error);
+                    this.serverEmailErrorMessage = error;
                     break;
                 case 'Password':
                     this.passwordError = true;
-                    passwordErrorMessages.push(error);
+                    this.serverPasswordErrorMessage = error;
                     break;
                 default:
-                    serverErrorMessages.push(`<li key=${idx}>${error}</li>`);
+                    this.serverErrorMessages.push(<li key={idx}>{error}</li>);
             }
-            return serverErrorMessages;
         })
     }
 
@@ -95,12 +107,15 @@ export default class SessionForm extends React.Component {
 
     render () {
         const formType = this.props.formType;
-        let emailErrorMessages = [], passwordErrorMessages = [], serverErrorMessages;
-        if (this.renderServerErrors) 
-            serverErrorMessages = this.processServerErrors(emailErrorMessages, passwordErrorMessages);
+        let emailErrorMessage, passwordErrorMessage;
+        if (this.renderServerErrors) {
+            this.processServerErrors();
+            emailErrorMessage = this.serverEmailErrorMessage;
+            passwordErrorMessage = this.serverPasswordErrorMessage;
+        }
         else {
-            emailErrorMessages = [this.state.emailErrorMessage];
-            passwordErrorMessages = [this.state.passwordErrorMessage];
+            emailErrorMessage = this.state.emailErrorMessage;
+            passwordErrorMessage = this.state.passwordErrorMessage;
         }
          
         // const serverErrorMessages = this.props.map(
@@ -128,7 +143,7 @@ export default class SessionForm extends React.Component {
 
                     <div className="server-errors">
                             <ul className="server-errors-list">
-                                {serverErrorMessages}
+                                {this.serverErrorMessages}
                             </ul>
                     </div>
 
@@ -147,11 +162,11 @@ export default class SessionForm extends React.Component {
                         
                         <div className="get-input">
                             <input className={"session-input" + (this.emailError ? " error" : "")} type="text" onChange={this.handleChange('email')} value={this.state.email} placeholder="name@work-email.com"/>
-                            <p className={"feedback" + (this.emailError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}></img>} {emailErrorMessages}</p>
+                            <p className={"feedback" + (this.emailError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}></img>} {emailErrorMessage}</p>
                         </div>
                         <div className="get-input">
                             <input className={"session-input" + (this.passwordError ? " error" : "")} type="password" onChange={this.handleChange('password')} value={this.state.password} placeholder={"Password" + (formType === "signup" ? " (must be at least 6 characters)" : "")}/>
-                            <p className={"feedback" + (this.passwordError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}></img>} {passwordErrorMessages}</p>
+                            <p className={"feedback" + (this.passwordError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}></img>} {passwordErrorMessage}</p>
                         </div>
                         <button onClick={this.handleSubmit}>{formType === "signup" ? "Sign Up" : "Sign In with Email"}</button>
                     </div>
