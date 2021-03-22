@@ -153,7 +153,7 @@ export default class SessionForm extends React.Component {
                         {(formType === "signup") ? (
                             <div className="get-input">
                                 <input className={"session-input" + (this.fullNameError ? " error" : "")} type="text" onChange={this.handleChange('fullName')} value={this.state.fullName} placeholder='Full name (e.g., "John Smith")'/>
-                                <p className={"feedback" + (this.fullNameError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}></img>} {this.state.fullNameErrorMessage}</p>
+                                <p className={"feedback" + (this.fullNameError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}/>} {this.state.fullNameErrorMessage}</p>
                             </div>
                         ) : ""}
                         {(formType === "signup") ? (
@@ -164,11 +164,11 @@ export default class SessionForm extends React.Component {
                         
                         <div className="get-input">
                             <input className={"session-input" + (this.emailError ? " error" : "")} type="text" onChange={this.handleChange('email')} value={this.state.email} placeholder="name@work-email.com"/>
-                            <p className={"feedback" + (this.emailError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}></img>} {emailErrorMessage}</p>
+                            <p className={"feedback" + (this.emailError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}/>} {emailErrorMessage}</p>
                         </div>
                         <div className="get-input">
                             <input className={"session-input" + (this.passwordError ? " error" : "")} type="password" onChange={this.handleChange('password')} value={this.state.password} placeholder={"Password" + (formType === "signup" ? " (must be at least 6 characters)" : "")}/>
-                            <p className={"feedback" + (this.passwordError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}></img>} {passwordErrorMessage}</p>
+                            <p className={"feedback" + (this.passwordError ? " error" : "")}>{<img className="triangleWarning" src={triangleWarning}/>} {passwordErrorMessage}</p>
                         </div>
                         <button type="submit" onClick={this.handleSubmit}>{formType === "signup" ? "Sign Up" : "Sign In with Email"}</button>
                         {formType==="login" ? (

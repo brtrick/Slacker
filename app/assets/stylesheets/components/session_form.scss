@@ -76,9 +76,10 @@
             height: 40px;
         }
         .server-errors-list li {
+            // display: flex;
+            // align-items: center;
             color: $red-error;
-            list-style-image: image_url("exclamation-triangle-solid.svg");
-            // list-style-image: url('exclamation-id.svg');
+            list-style-image: image_url("warning_amber-24px.svg");
             list-style-type: disc;
             position: absolute;
             font-size: 30px;
@@ -87,6 +88,7 @@
             }
             left: 50%;
             transform: translateX(-50%);
+            text-align: center;
         }
 
         button, input {

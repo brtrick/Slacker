@@ -13,12 +13,15 @@
 #
 class Subscription < ApplicationRecord
     validates :subscriber_id, :subscribable_type, :subscribable_id, presence: true
-    validates :admin, :pending, inclusion: {in: ["true", "false"]}
-    validates :subscriber_id, uniqueness: {{scope: [:subscribable_id, :subscribable_type],
-        message: "is already subscribed."}}
+    validates :admin, :pending, inclusion: {in: [true, false]}
+    validates :subscriber_id, uniqueness: {scope: [:subscribable_id, :subscribable_type],
+        message: "is already subscribed."}
 
-    belongs_to :subscriber
+    belongs_to :subscriber,
         class_name: :User
 
     belongs_to :subscribable, polymorphic: true
+
+    scope :admin, -> {where(admin: true)}
+    scope :pending, -> {where(pending: true)}
 end

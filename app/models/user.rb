@@ -20,14 +20,18 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
     attr_reader :password
 
-    has_many :subscriptions 
+    has_many :messages,
+        foreign_key: :author_id
+        
+    has_many :subscriptions,
+         foreign_key: :subscriber_id 
 
     has_many :subscribed_channels,
         through: :subscriptions,
         source: :subscribable,
         source_type: :Channel
 
-    has_many :subscribed_workspace,
+    has_many :subscribed_workspaces,
         through: :subscriptions,
         source: :subscribable,
         source_type: :Workspace

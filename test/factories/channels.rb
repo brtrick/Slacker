@@ -10,6 +10,7 @@
 #  dm           :boolean          default(FALSE), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  topic        :string
 #
 FactoryBot.define do
   factory :channel do
