@@ -10,6 +10,9 @@ class Api::WorkspacesController < ApplicationController
     def show
         id = params[:id]
         @workspace = Workspace.find(id)
+        if params[:user_id]
+            @channels = Channel.joins(:subscribers).where(workspace_id: id, users: {id: params[:user_id]})
+        end
     end
 
 

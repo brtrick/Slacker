@@ -24,4 +24,5 @@ class Subscription < ApplicationRecord
 
     scope :admin, -> {where(admin: true)}
     scope :pending, -> {where(pending: true)}
+    scope :active, -> {where(pending: false)}
 end

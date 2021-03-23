@@ -10,14 +10,14 @@ export default class WorkspaceSelectionForm extends React.Component {
         this.handleClick= this.handleClick.bind(this);
     }
     componentDidMount() {
-        this.props.fetchWorkspaces(this.props.session.currentUserId);
+        this.props.fetchUserWorkspaces(this.props.session.currentUserId);
     }
 
     componentWillUnmount() {
     }
     handleClick(e) {
         e.preventDefault();
-        this.props.fetchWorkspace((e.target.dataset.id));
+        this.props.fetchUserWorkspace(this.props.session.currentUserId, e.target.dataset.id);
     }
     render() {
         if (Boolean(this.props.session.currentWorkspaceId)) return (<Redirect to="/" />);

@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Message.destroy_all
 Subscription.destroy_all
 User.destroy_all 
 Channel.destroy_all 
@@ -14,6 +15,7 @@ ApplicationRecord.connection.reset_pk_sequence!('users')
 ApplicationRecord.connection.reset_pk_sequence!('channels')
 ApplicationRecord.connection.reset_pk_sequence!('workspaces')
 ApplicationRecord.connection.reset_pk_sequence!('subscriptions')
+ApplicationRecord.connection.reset_pk_sequence!('messages')
 
 User.create(full_name: 'Slacker Demo', display_name: 'Slacker', email: 'slacker@slacker.com', password: 'slacker')
 User.create(full_name: 'Bradley Trick', display_name: 'Brad', email: 'brad@gmail.com', password: '1234567')
@@ -34,6 +36,8 @@ Channel.create(name:"general", description:"General Channel", workspace_id: 2, p
 Channel.create(name:"general", description:"General Channel", workspace_id: 3, private: false, dm: false)
 Channel.create(name:"general", description:"General Channel", workspace_id: 4, private: false, dm: false)
 Channel.create(name:"Hip Replacements", description:"All about Hips", workspace_id: 3, private: false, dm: false, topic: "hips!")
+Channel.create(name:"1.3", workspace_id:1, private:true, dm:true)
+Channel.create(name:"1.2.3", workspace_id: 1, private:true, dm:true)
 
 Subscription.create(subscriber_id: 1, subscribable_id: 1, subscribable_type: :Workspace, admin: true)
 Subscription.create(subscriber_id: 2, subscribable_id: 1, subscribable_type: :Workspace, admin: true)
@@ -51,6 +55,12 @@ Subscription.create(subscriber_id: 6, subscribable_id: 1, subscribable_type: :Ch
 Subscription.create(subscriber_id: 3, subscribable_id: 3, subscribable_type: :Workspace)
 Subscription.create(subscriber_id: 3, subscribable_id: 3, subscribable_type: :Channel)
 Subscription.create(subscriber_id: 3, subscribable_id: 4, subscribable_type: :Channel)
+Subscription.create(subscriber_id: 1, subscribable_id: 8, subscribable_type: :Channel)
+Subscription.create(subscriber_id: 3, subscribable_id: 8, subscribable_type: :Channel)
+Subscription.create(subscriber_id: 1, subscribable_id: 9, subscribable_type: :Channel)
+Subscription.create(subscriber_id: 2, subscribable_id: 9, subscribable_type: :Channel)
+Subscription.create(subscriber_id: 3, subscribable_id: 9, subscribable_type: :Channel)
+Subscription.create(subscriber_id: 4, subscribable_id: 9, subscribable_type: :Channel, pending: true)
 
 Message.create(author_id: 1, channel_id: 1, body: "Welcome everyone!")
 Message.create(author_id: 2, channel_id: 1, body: "Thanks!")

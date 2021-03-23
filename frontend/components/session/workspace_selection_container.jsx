@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchWorkspaces, fetchWorkspace } from "../../actions/workspace_actions";
+import { fetchUserWorkspaces, fetchUserWorkspace } from "../../actions/workspace_actions";
 import { logout } from "../../actions/session_actions";
 import WorkspaceSelectionForm from "./workspace_selection_form";
 
@@ -14,8 +14,8 @@ const mapSTP = ({ entities: {workspaces}, entities: {users}, session}) => {
 
 const mapDTP = (dispatch) => {
     return {
-        fetchWorkspaces: user_id => dispatch(fetchWorkspaces(user_id)),
-        fetchWorkspace:  workspace_id => dispatch(fetchWorkspace(workspace_id)),
+        fetchUserWorkspaces: user_id => dispatch(fetchUserWorkspaces(user_id)),
+        fetchUserWorkspace:  (user_id, workspace_id) => dispatch(fetchUserWorkspace(user_id, workspace_id)),
         logout: () => dispatch(logout())
     }
 }

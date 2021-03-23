@@ -5,11 +5,17 @@ export const fetchWorkspace = (id) => {
     })
 }
 
-export const fetchWorkspaces = (user_id) => {
+export const fetchUserWorkspace = (userId, wsId) => {
     return $.ajax({
         method: 'GET',
-        url: `/api/workspaces/`,
-        data: {user_id: user_id}
+        url: `/api/users/${userId}/workspaces/${wsId}`
+    })
+}
+
+export const fetchUserWorkspaces = (user_id) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/users/${user_id}/workspaces/`
     })
 }
 

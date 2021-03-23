@@ -26,7 +26,11 @@ class Channel < ApplicationRecord
       through: :subscriptions,
       source: :subscriber
 
+  has_many :messages
+
   scope :dm, -> {where(dm: true)}
+  scope :channel, -> {where(dm:false)}
+  scope :public_channel, -> {where(private: false)}
   scope :private_channel, -> {where(private: true)}
   scope :alphabetized, -> {order("name ASC")}
 end
