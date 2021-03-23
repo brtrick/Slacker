@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, Redirect} from "react-router-dom"
-import {emailValid} from "../util/regex_util"
+import {emailValid} from "../../util/regex_util"
 
 
 export default class SessionForm extends React.Component {
@@ -30,7 +30,7 @@ export default class SessionForm extends React.Component {
     }
 
     componentWillUnmount() {
-        this.props.clearSessionErrors();
+        this.props.clearErrors();
     }
 
     handleChange (field) {

@@ -1,17 +1,20 @@
 class Api::WorkspacesController < ApplicationController
 
     def index
-        @workspaces = Workspace.all
+        if params[:user_id]
+            @workspaces = Workspace.joins(:subscribers).where(users: {id: params[:user_id]})
+        else @workspaces = Workspace.all
+        end
     end
     
     def show
-        @workspace = Workspace.find(params[:workspace][:id])
-        @channels = Workspace.where()
+        id = params[:id]
+        @workspace = Workspace.find(id)
     end
 
 
         private
-    def channel_params
+    def workspace_params
         params.require(:workspace).permit(:name)
     end
 end
