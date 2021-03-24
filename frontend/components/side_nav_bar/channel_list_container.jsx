@@ -2,11 +2,13 @@ import { connect } from "react-redux";
 import { fetchChannelMessages } from "../../actions/channel_actions";
 import ChannelList from "./channel_list";
 
-const mapSTP = ({ entities: { channels, dms } }) => {
+const mapSTP = ({ entities: { channels, dms, users }, session: {currentUserId} }) => {
 
     return {
+        users: users,
         channels: channels,
-        dms:    dms
+        dms:    dms,
+        currentUserId: currentUserId
     }
 }
 

@@ -28,14 +28,16 @@ export default class ChannelList extends React.Component {
         //Link to component
     }
 
+    
     render() {
         const dm = this.props.dm;
         const channels = (dm ? this.props.dms : this.props.channels);
         const selected = this.props.selected;
-
+        
         const channelListItems = Object.values(channels).map( (channel, idx) => {
             return <ChannelListItem key={idx} channel={channel} clickFunction={this.handleClick} 
-                selected={selected} dm={dm}/>
+                selected={selected} dm={dm} users={this.props.users}
+                currentUserId={this.props.currentUserId}/>
         });
         
         const visible = this.state.visible;
@@ -50,7 +52,8 @@ export default class ChannelList extends React.Component {
                 {(!visible && Boolean(selected)) ? (
                     <ul>
                         <ChannelListItem key={selected} channel={channels[selected]} clickFunction={this.handleClick}
-                            selected={selected} dm={dm} />
+                            selected={selected} dm={dm} users={this.props.users}
+                            currentUserId={this.props.currentUserId} />
                     </ul>
                 ) : (<></>)}
             </div>

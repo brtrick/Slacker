@@ -56,12 +56,14 @@
         // margin-right: auto;
         text-overflow: ellipsis;
         overflow: hidden;
-        white-space: nowrap;
         opacity: 1;
         height: 28px;
         line-height: 28px;
         white-space: nowrap;
         color: $side-nav-font;
+        .material-icons {
+            line-height: 28px;
+        }
         span {
             margin-right: 10px;
         }

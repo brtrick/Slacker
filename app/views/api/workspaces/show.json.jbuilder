@@ -23,4 +23,13 @@ if @channels
             end
         end
     end
+    json.users do
+        @channels.dm.each do |dm|
+            dm.subscribers.merge(Subscription.active).each do |subscriber|
+                json.set! subscriber.id do
+                    json.partial! '/api/users/user_short', user: subscriber
+                end
+            end
+        end
+    end
 end
