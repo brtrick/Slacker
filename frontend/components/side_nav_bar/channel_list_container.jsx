@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import {withRouter} from "react-router-dom";
 import { fetchChannelMessages } from "../../actions/channel_actions";
 import ChannelList from "./channel_list";
 
@@ -18,4 +19,4 @@ const mapDTP = (dispatch) => {
     }
 }
 
-export default connect(mapSTP, mapDTP)(ChannelList);
+export default withRouter(connect(mapSTP, mapDTP)(ChannelList));

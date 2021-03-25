@@ -23,9 +23,7 @@ export default class ChannelList extends React.Component {
         e.preventDefault();
         const id = parseInt(e.currentTarget.dataset.id);
         this.props.selectItem((this.props.dm ? "dm" : "channel"), id);
-        // console.log(`Channel id is ${id}`);
-        // this.props.fetchChannelMessages
-        //Link to component
+        this.props.history.push(`/dashboard/channels/${id}`);
     }
 
     

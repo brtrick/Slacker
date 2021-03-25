@@ -5,7 +5,7 @@ import configureStore from "./store/store";
 import * as APIUtil from "./actions/workspace_actions";
 import * as SessionAPIUtil from "./actions/session_actions";
 import * as WorkspaceAPIUtil from "./util/workspace_api_util";
-
+import * as Selectors from  "./reducers/selectors"
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // window.fetchWorkspace = APIUtil.fetchWorkspace
         // window.fetchWorkspaces = APIUtil.fetchWorkspaces
         window.logout = SessionAPIUtil.logout
+        window.getFilteredChannels = Selectors.getFilteredChannels
+        window.getChannelsWithSubstring = Selectors.getChannelsWithSubstring
         // window.loadWorkspace = WorkspaceAPIUtil.fetchWholeWorkspace
     }
 

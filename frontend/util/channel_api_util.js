@@ -5,10 +5,10 @@ export const fetchChannel = (id) => {
     })
 }
 
-export const fetchChannels = () => {
+export const fetchWorkspaceChannels = (workspace_id) => {
     return $.ajax({
         method: 'GET',
-        url: `/api/channels/`
+        url: `/api/workspaces/${workspace_id}/channels/`
     })
 }
 

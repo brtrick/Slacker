@@ -1,6 +1,6 @@
 import {
     RECEIVE_CHANNEL,
-    RECEIVE_CHANNELS
+    RECEIVE_WORKSPACE_CHANNELS
 } from '../actions/channel_actions';
 import { RECEIVE_USER_WORKSPACE } from '../actions/workspace_actions'
 
@@ -13,8 +13,8 @@ const channelsReducer = (state = defaultState, action) => {
             return Object.assign({}, action.workspace.channels);
         case RECEIVE_CHANNEL:
             return Object.assign({}, state, { [action.channel.id]: action.channel });
-        case RECEIVE_CHANNELS:
-            return Object.assign({}, action.channels, state);
+        case RECEIVE_WORKSPACE_CHANNELS:
+            return Object.assign({}, state, action.channels);
         default:
             return state;
     }

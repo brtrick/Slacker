@@ -17,10 +17,15 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
-    resources :workspaces
+    resources :workspaces do
+      resources :channels, only: [:index]
+    end
     resources :users, only: [:create] do
       resources :workspaces, only: [:show, :index]
     end
+    resources :channels
+    resources :subscriptions
+    resources :messages
     resource :session, only: [:create, :destroy]
   end
 end
