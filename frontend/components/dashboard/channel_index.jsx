@@ -36,7 +36,7 @@ export default class ChannelIndex extends React.Component {
             <div className="index">
                 <div className="header">
                     <h1>Channel browser</h1>
-                    <p>{numChannels} channels</p>
+                    {/* <p>{numChannels} channels</p> */}
                 </div>
                 <div className="body">
                     {channelIndexItems}
