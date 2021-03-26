@@ -12,7 +12,6 @@ constructor (props) {
 // }
 
 render () {
-    debugger;
     return (
         <div className = "displayItem">
             <p> Hello! </p>

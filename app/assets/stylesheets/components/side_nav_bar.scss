@@ -17,6 +17,25 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
 }
+
+.side-nav-bar-header {
+    box-sizing: border-box;
+    height: 65px;
+    border-top: 1px solid $light-gray;
+    border-bottom: 1px solid $light-gray;
+    background-color: $side-nav-purple;
+    display: flex;
+    align-items: center;
+
+    .workspace {
+        width: 150px;
+        padding: 0 54px 0 16px;
+        font-weight: 700;
+        font-size: 15px;
+        color: white;
+    }
+}
+
 .side-nav-bar {
     background-color: $side-nav-purple;
     position: fixed;
@@ -29,7 +48,17 @@
     flex-direction: column;
     color: $side-nav-font;
     font-family: lato, sans-serif;
+
+    a {
+        text-decoration: none;
+        color: $side-nav-font;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding-left: 18px;
+
+    }
 }
+
 .channel-list {
     h1 {
         cursor: pointer;

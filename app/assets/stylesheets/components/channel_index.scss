@@ -1,0 +1,89 @@
+
+.index {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.index-element {
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: row;
+    // flex: 1 1 100%;
+    height: 40px;
+    padding: 16px 12px;
+    align-items: center;
+    
+    button {
+        margin-right: 50px;
+    }
+    .join-button {
+        background-color: $join-green;
+        color: white;  
+    }
+
+    .join-button:focus {
+        box-shadow: none;
+    }
+    
+    .join-button:hover {
+        background-color: $hover-green;
+        box-shadow: 0 1px 4px rgba(0,0,0, .30)
+    }
+
+    .joined {
+        color: $join-green;
+        font-weight: 700;
+    }
+}
+.index-element-data {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    // flex: 1 1 100%;
+    width: 100%;
+    justify-content: center;
+    color: $light-gray;
+    font-size: 15px;
+    
+    h3 {
+        font-weight: 700;
+        color: $black;
+        padding-bottom: 5px;
+    }
+    
+    p {
+        font-size: 13px;
+        display: flex;
+        flex-direction: row;
+    }
+    
+}
+
+li.index-element:hover {
+    background-color: rgb(245, 244, 245);
+}
+
+.index {
+    h1 {
+        font-weight: 700;
+        font-size: 15px;
+        color: $black;
+        margin-left: 15px;
+    }
+    
+    
+    .material-icons {
+        font-size: 10px;
+    }
+
+    span.dot {
+        padding: 0px 5px 0 5px;
+    }
+}
+
+li.index-element {
+        list-style: none;
+        margin: 0 15px;
+        border-bottom: 1px solid $lightest-gray;
+        // width: 100%;
+}

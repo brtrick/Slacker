@@ -7,7 +7,7 @@ const ChannelListItem = ({channel, clickFunction, selected, dm, users, currentUs
         
         name = subscribers.map( (id) => {
             return (users[id].displayName ? users[id].displayName : users[id].fullName);
-        }).join("+");
+        }).join(", ");
     }
     
     return (

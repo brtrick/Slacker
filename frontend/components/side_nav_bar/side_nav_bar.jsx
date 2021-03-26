@@ -1,6 +1,7 @@
 import React from "react"
 import { NavLink, Link } from "react-router-dom";
 import ChannelListContainer from "./channel_list_container";
+import WorkspaceContainer from "./workspace_container";
 
 export default class SideNavBar extends React.Component {
     constructor(props) {
@@ -37,7 +38,9 @@ export default class SideNavBar extends React.Component {
     render() {
         return (
             <div className="side-nav-bar">
-                {/* <WorkspaceContainer /> */}
+                <div className="side-nav-bar-header">
+                    <WorkspaceContainer />
+                </div>
                 <Link to="/dashboard/browse-channels"><h1>Browse Channels</h1></Link>
                 <ChannelListContainer selected={this.state.selected.channel} 
                     selectItem={this.selectItem} dm={false}/>

@@ -47,7 +47,7 @@ export default class ChannelList extends React.Component {
                 <ul className={visible ? "" : "hidden"}>
                     {channelListItems}
                 </ul>
-                {(!visible && Boolean(selected)) ? (
+                {(!visible && Boolean(selected) && channels[selected]) ? (
                     <ul>
                         <ChannelListItem key={selected} channel={channels[selected]} clickFunction={this.handleClick}
                             selected={selected} dm={dm} users={this.props.users}

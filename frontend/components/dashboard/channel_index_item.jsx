@@ -8,16 +8,18 @@ const ChannelIndexItem = ({element, clickFunction, isSubscriber}) => {
 
     return (
         <li className="index-element" onMouseEnter={()=>setVisible(true)}
-            data-id={element.id} onMouseLeave={()=>setVisible(false)}>
+            onMouseLeave={()=>setVisible(false)}>
                 <div className="index-element-data">
                     <h3># {element.name}</h3>
                     <p>
-                        {isSubscriber && (<span className="subscribed">Joined</span>)}
+                    {isSubscriber && (<><span className="joined"><span className="material-icons">done</span>Joined</span><span className="dot">·</span></>)}
                         <span>{members} {"member" + (members !== 1 ? "s" : "")}</span>
-                        <span>{element.description}</span>
+                    <span>{(element.description !== "" ? (<><span className="dot">·</span><span>{element.description}</span></>) : "")}</span>
                     </p>
                 </div>
-                {visible && (<button className={buttonType.toLowerCase() + "-button"} onClick={clickFunction}>{buttonType}</button>)}  
+            {visible && (<button className={"index-button " + buttonType.toLowerCase() + "-button"} data-id={element.id} onClick={clickFunction}>{buttonType}</button>)}
+                {/* <button className={"index-button " + buttonType.toLowerCase() + "-button" + (visible ? "" : " hidden")} 
+                    data-id={element.id} onClick={clickFunction}>{buttonType}</button> */}
         </li>
     )
 }

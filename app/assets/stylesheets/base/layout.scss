@@ -8,13 +8,89 @@ a:hover {
     text-decoration: underline;
 }
 
+input[type=text], input[type=password] {
+    box-sizing: border-box;
+    height: 44px;
+    padding: 11px 12px 13px;
+    font-weight: 400;
+    color: $black;
+    line-height: 1.33333333;
+    border-color: $gray;
+    border: 1px solid $light-gray;         
+}
+
+::placeholder {
+    color: $light-gray;
+    font-weight: 300;
+}
+
+input:focus {
+    box-shadow: 0 0 0 4px rgba(29,155,209,.3);
+    border-radius: 4px;
+}
+
 button:hover, a:hover {
     cursor: pointer;
 }
 
+button.index-button {
+    height: 36px;
+    width: 80px;
+    padding: 0 12px 1px;
+    color: $black;
+    border: 1px solid $gray-border;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: auto;
+    transform: none;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button.index-button:hover {
+    background-color: $lightest-gray;
+}
  
 .dashboard-content {
     position: absolute;
     top: 38px;
     left: 260px;
+    width: calc(100vw - 260px);
+    overflow-x: hidden;
+    height: 100%;
+
+    .header {
+        height: 64px;
+        border-bottom: 1px solid $lightest-gray;
+        position: fixed;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        background-color: white;
+        z-index: 10;
+    }
+    .body {
+        position: absolute;
+        top: 64px;
+        width: 109%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+}
+
+.top-nav-bar {
+    display: flex;
+    button {
+        margin-right: 15px;
+        margin-left: auto;
+        color: white;
+    }
 }

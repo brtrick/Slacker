@@ -2,14 +2,16 @@ import { connect } from "react-redux";
 import {withRouter} from "react-router-dom";
 import { fetchChannelMessages } from "../../actions/channel_actions";
 import ChannelList from "./channel_list";
+import {getCurrentUsersChannels, getFilteredChannelsObject} from "../../reducers/selectors"
 
-const mapSTP = ({ entities: { channels, dms, users }, session: {currentUserId} }) => {
-
+// dms: getCurrentUsersChannels(state).filter(channel => (channel.dm)),
+const mapSTP = state => {
+    const channels = getCurrentUsersChannels(state);
     return {
-        users: users,
-        channels: channels,
-        dms:    dms,
-        currentUserId: currentUserId
+        users: state.entities.users,
+        channels: getFilteredChannelsObject(channels, "dm", false),
+        dms: getFilteredChannelsObject(channels, "dm", true),
+        currentUserId: state.session.currentUserId
     }
 }
 

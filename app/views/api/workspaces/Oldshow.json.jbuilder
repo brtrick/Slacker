@@ -9,10 +9,17 @@ end
 
 if @channels
     json.channels do 
-        @channels.each do |channel|
+        @channels.channel.each do |channel|
             json.set! channel.id do
                 json.partial! '/api/channels/channel', channel: channel
                 json.partial! '/api/channels/channel_extended', channel: channel             
+            end
+        end
+    end
+    json.dms do 
+        @channels.dm.each do |dm|
+            json.set! dm.id do
+                json.partial! '/api/channels/dm', dm: dm
             end
         end
     end

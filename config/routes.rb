@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       resources :workspaces, only: [:show, :index]
     end
     resources :channels
-    resources :subscriptions
+    resources :subscriptions, only: [:create, :destroy, :patch]
     resources :messages
     resource :session, only: [:create, :destroy]
   end

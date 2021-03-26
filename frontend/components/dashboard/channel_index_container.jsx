@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import {fetchWorkspaceChannels} from "../../actions/channel_actions"
+import {subscribeChannel, unsubscribeChannel} from "../../actions/subscription_actions"
 import ChannelBrowser from "./channel_index";
 
 const mapSTP = (state) => {
@@ -12,7 +13,9 @@ const mapSTP = (state) => {
 
 const mapDTP = (dispatch) => {
     return {
-        fetchWorkspaceChannels: (workspace_id) => dispatch(fetchWorkspaceChannels(workspace_id))
+        fetchWorkspaceChannels: (workspaceId) => dispatch(fetchWorkspaceChannels(workspaceId)),
+        subscribeChannel: (userId, channelId) => dispatch(subscribeChannel(userId, channelId)),
+        unsubscribeChannel: (userId, channelId) => dispatch(unsubscribeChannel(userId, channelId))
         // clearSessionErrors: () => dispatch(clearSessionErrors())
     }
 }
