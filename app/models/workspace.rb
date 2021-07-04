@@ -10,8 +10,11 @@
 class Workspace < ApplicationRecord
     validates :name, presence: true
 
-    has_many :channels
-    has_many :subscriptions, as: :subscribable
+    has_many :channels,
+        dependent: :destroy
+
+    has_many :subscriptions, as: :subscribable,
+        dependent: :destroy
 
     has_many :subscribers,
         through: :subscriptions,

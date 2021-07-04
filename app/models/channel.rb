@@ -20,13 +20,15 @@ class Channel < ApplicationRecord
 
   belongs_to :workspace
 
-  has_many :subscriptions, as: :subscribable
+  has_many :subscriptions, as: :subscribable,
+    dependent: :destroy
 
   has_many :subscribers,
-      through: :subscriptions,
-      source: :subscriber
+    through: :subscriptions,
+    source: :subscriber
 
-  has_many :messages
+  has_many :messages, 
+    dependent: :destroy
 
   scope :dm, -> {where(dm: true)}
   scope :channel, -> {where(dm: false)}
