@@ -8,7 +8,7 @@ import HomeContainer from "./home_container";
 import WorkspaceSelectionContainer from "./session/workspace_selection_container";
 import Dashboard from "./dashboard/dashboard";
 
-const App = () => (
+const App = ({AppCable}) => (
     <div>
         <header>
             
@@ -19,7 +19,7 @@ const App = () => (
             <AuthRoute path="/signup" exact component={SignupFormContainer} />
             <Route path="/splash" exact component={SplashPage} />
             <ProtectedRoute path="/workspace" exact component={WorkspaceSelectionContainer} />
-            <ProtectedRoute path="/dashboard" component={Dashboard} />
+            <ProtectedRoute path="/dashboard" component={Dashboard} AppCable={AppCable}/>
             {/* <ProtectedRoute path="/" exact component={HomeContainer} /> */}
             <Redirect to="/dashboard" />
         </Switch>

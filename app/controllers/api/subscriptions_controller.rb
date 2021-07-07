@@ -14,7 +14,6 @@ class Api::SubscriptionsController < ApplicationController
     end
 
     def destroy
-        # debugger
         subscription = Subscription.find_by(subscription_params)
         Subscription.destroy(subscription.id)
         

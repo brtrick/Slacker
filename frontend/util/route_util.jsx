@@ -13,11 +13,11 @@ const Auth = ({component: Component, path, loggedIn, exact}) => (
     )}/>
 );
 
-const Protected = ({component: Component, path, loggedIn, workspaceSet, exact}) => (
-    <Route path={path} exact={exact} render={(props) => {
+const Protected = ({component: Component, path, loggedIn, workspaceSet, exact, AppCable}) => (
+    <Route path={path} exact={exact}  render={(props) => {
         if (loggedIn) {
             if (path==="/workspace" || workspaceSet)
-                return (<Component {...props} />);
+                return (<Component {...props} AppCable={AppCable}  />);
             else
                 return (<Redirect to="/workspace" />);
 

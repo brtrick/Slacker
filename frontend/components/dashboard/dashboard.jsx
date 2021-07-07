@@ -6,10 +6,10 @@ import SideNavBarContainer from "../side_nav_bar/side_nav_bar_container";
 import ChannelIndexContainer from "./channel_index_container";
 import ChannelDisplayContainer from "./channel_display_container";
 
-const Dashboard = () => (
+const Dashboard = ({AppCable}) => (
     <div>
         <TopNavBarContainer />
-        <SideNavBarContainer />
+        <SideNavBarContainer AppCable={AppCable}/>
         <div className="dashboard-content">
             <Switch>
                 <ProtectedRoute path="/dashboard/browse-channels" exact component={ChannelIndexContainer}/>

@@ -43,9 +43,9 @@ export default class SideNavBar extends React.Component {
                 </div>
                 <Link to="/dashboard/browse-channels"><h1>Browse Channels</h1></Link>
                 <ChannelListContainer selected={this.state.selected.channel} 
-                    selectItem={this.selectItem} dm={false}/>
+                    selectItem={this.selectItem} dm={false} AppCable={this.props.AppCable}/>
                 <ChannelListContainer selected={this.state.selected.dm}
-                    selectItem={this.selectItem} dm={true}/>
+                    selectItem={this.selectItem} dm={true} AppCable={this.props.AppCable}/>
             </div>
         )
     }
