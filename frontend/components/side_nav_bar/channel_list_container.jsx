@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import {withRouter} from "react-router-dom";
 import { fetchChannel } from "../../actions/channel_actions";
+import {receiveMessage} from "../../actions/message_actions";
 import ChannelList from "./channel_list";
 import {getCurrentUsersChannels, getFilteredChannelsObject} from "../../reducers/selectors"
 
@@ -17,6 +18,7 @@ const mapSTP = state => {
 
 const mapDTP = (dispatch) => {
     return {
+        receiveMessage: (message) => dispatch(receiveMessage(message)),
         fetchChannel: (channel_id) => dispatch(fetchChannel(channel_id)),
     }
 }

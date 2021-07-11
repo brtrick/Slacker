@@ -16,6 +16,7 @@ export default class ChannelList extends React.Component {
                 })
         }
     }
+    
     constructor (props) {
         super(props);
 
@@ -24,6 +25,7 @@ export default class ChannelList extends React.Component {
         }
         this.wsSubscriptions = {};
         this.handleClick = this.handleClick.bind(this);
+        this.handleReceived = this.handleReceived.bind(this);
         this.toggleChannels = this.toggleChannels.bind(this);
     }
 
@@ -42,7 +44,8 @@ export default class ChannelList extends React.Component {
     }
 
     handleReceived(msg) {
-        console.log(msg.msg)
+        console.log(msg)
+        if (typeof msg === "string") this.props.receiveMessage(JSON.parse(msg));
     }
     
     render() {

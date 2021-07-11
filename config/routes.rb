@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create] do
       resources :workspaces, only: [:show, :index]
     end
+    resources :messages, only: [:create]
     resources :channels
     resources :subscriptions, only: [:create, :destroy, :patch]
     resources :messages
